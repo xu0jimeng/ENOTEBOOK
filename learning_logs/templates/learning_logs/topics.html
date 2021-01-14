@@ -1,0 +1,38 @@
+
+{% extends "learning_logs/base.html"%}
+
+{% block contentleft %}
+<!-- <style type="text/css">
+ .leftlist{
+list-style-type:upper-roman;
+</style>
+ -->
+<div>
+  <p > 学习列表: </p>
+  <ul >
+    {% for topic in topics %}
+      <li class="leftlist my-3" > 
+          <a href="{% url 'learning_logs:topic' topic.id %}"> {{ topic }} </a>
+          <!-- {% 是模板标签，模板标签里是一段小代码。 -->
+          <!-- {{ topic }}这些花括号不会出现在网页中，他们只是告诉Django我们使用了一个模板变量。 -->
+      </li>
+    {% empty %}
+      <li>无</li>
+    {% endfor %}
+  </ul>
+</div>
+<div><a href="{% url 'learning_logs:new_topic' %}" style="color:#7700cc">
+   <!--  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="#99FF00" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+    </svg> --> 新增课程(NEW)</a> 
+</div>
+{% endblock contentleft %}
+
+{% block contentright%}
+<div>
+  <h2>
+    课程计划.
+  </h2>
+</div> 
+{% endblock contentright %}
+

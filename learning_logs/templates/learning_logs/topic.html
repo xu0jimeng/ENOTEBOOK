@@ -1,0 +1,49 @@
+{% extends "learning_logs/base.html"%}
+
+{% block contentleft %}
+
+<style type="text/css">
+.row{
+list-style-type:none;
+</style>
+
+<div class="navbar bg-dark"> 
+<button class="navbar-toggler text-white "  type="button" data-toggle="collapse" data-target="#navbarleft" aria-expanded="false" aria-controls="navbarleft">
+<h3 href="{% url 'learning_logs:topic' topic.id %}" class="text-white"> {{ topic }} </h3>
+</button>
+  <div class="collapse navbar-collapse" id="navbarleft">
+  <div class="nav">
+  {% for entry in entries %}
+  <li class="nav-item">
+  <a class="nav-link text-white" href="{% url 'learning_logs:edit_entry' entry.id %}">
+  {{ entry.date_added|date:'M d, Y H:i'}}
+  </a>
+  <li>
+  {% endfor %}
+  </div>
+  </div>
+<li class="nav-item" ><a class="nav-link" href="{% url 'learning_logs:new_entry' topic.id %}">添加目录</a><li>
+</div>
+{% endblock contentleft %}
+
+
+{% block contentright%}
+{% for entry in entries %}
+    <div>
+      <div class="card bg-secondary text-white">
+        <div>
+          <span>
+            <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="text-white">edit_entry</a>
+          </span>
+        </div>
+      </div>
+      <div class="card-body">
+        {{ entry.text|linebreaks}}
+      </div>
+    </div> <!-- panel -->
+  {% empty %}
+    <li>
+      There are no entries for this topic yet.
+    </li>
+{% endfor %}
+{% endblock contentright %}

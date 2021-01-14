@@ -1,0 +1,12 @@
+{% extends "learning_logs/base.html" %}
+
+{% block header %}
+<div class="mx-auto" style="width:750px">
+  <form method="post" action="{% url 'users:register' %}" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit" class="btn btn-primary">register</button>
+  <input type="hidden" name="next" value="{% url 'learning_logs:topics'%}" />
+  </form>
+</div>
+{% endblock header %}

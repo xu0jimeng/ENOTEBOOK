@@ -1,0 +1,17 @@
+{% extends "learning_logs/base.html"%}
+
+{% block header %}
+  <div class='jumbotron'>
+  	<h1>Markweb|记事本</h1>
+  </div>
+{% endblock header %}
+
+{% block contentright %}
+  <h2>
+  	<a href="{% url 'users:register' %}">点击注册</a> 获得一个特别好用的网络记事本.
+  </h2>
+  <h2>
+  	当你开始归纳总结时，你的生活将会变得与众不同.
+  </h2>
+
+{% endblock contentright %}

@@ -1,0 +1,66 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head> 
+<meta charset="utf-8">
+<meta http-equiv="X-UA--Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=0.3, maxmum-scale=1.0, minimum-scale=0.3">
+
+<title>Learning Log</title>
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+</head>
+<body>
+
+  <!-- Static navbar -->
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container"> 
+
+      <div class="navbar-header">
+      	<button type="button" class="navbar-toggle collapsed"
+      	    data-toggle="collapse" data-target="#navbar"
+      	    aria-expanded="false" aria-controls="navbar">
+      	</button>
+        <a class="navbar-brand" href="{% url 'learning_logs:index' %}">
+            首页</a>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+      	<ul class="nav navbar-nav">
+      		<li><a href="{% url 'learning_logs:topics' %}">学习项目</a></li>
+      	</ul>
+
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'learning_logs:items' %}">items</a></li>
+        </ul>
+
+      	<ul class="nav navbar-nav navbar-right">
+      		{% if user.is_authenticated %}
+      		  <li><a>Hello,{{ user.username }}.</a></li>
+      		  <li><a href="{% url 'users:logout' %}">登出</a></li>
+      		  {% else %} 
+      		  <li><a href="{% url 'users:register' %}">注册</a></li>
+      		  <li><a href="{% url 'users:login' %}">登录</a></li>
+      		{% endif %}
+      	</ul>
+      </div><!-- /.nav-collapse -->
+
+    </div>
+  </nav>
+  <div class="container">
+  	<div class="page-header">
+  		{% block header %}{% endblock header %}
+  	</div>
+  	<div class="col-md-3">
+  		{%block contentleft %} {%endblock contentleft%}
+  	</div>
+    <div class="col-md-9">
+      {%block contentright %} {%endblock contentright%}
+    </div>
+  </div>  <!-- /container -->
+
+</body>
+</html>

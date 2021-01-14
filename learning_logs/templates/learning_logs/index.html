@@ -1,0 +1,26 @@
+{% extends "learning_logs/base.html"%}
+
+
+{% block contentleft %}
+<!-- <style>
+#left
+{background-color: #B0E0E6;}
+</style> -->
+<div class="blockquote text-center" >
+  <a href="{% url 'learning_logs:new_topic' %}">
+	<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="#000" xmlns="http://www.w3.org/2000/svg">
+  	<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+	</svg></a> 
+</div>
+<div class="blockquote text-center">
+  <p class="text-secondary">新建课程</p>
+</div>
+{% endblock contentleft %}
+
+
+{% block contentright %}
+<div>
+   <h2 class="text-center my-4" >课程计划.</h2>
+</div>
+{% endblock contentright %}
+

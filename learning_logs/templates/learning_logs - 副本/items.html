@@ -1,0 +1,31 @@
+{% extends "learning_logs/base.html"%}
+{% block header %}
+
+  <h1>学习项目</h1>
+
+{% endblock header %}
+
+{% block contentleft%}
+  <div>
+  <p> 项目列表 </p>
+  <ul>
+  	{% for topic in topics %}
+  	  <li> 
+  	  	<h3>
+  	  		<a href="{% url 'learning_logs:topic' topic.id %}"> {{ topic }} </a>
+          <!-- {% 是模板标签，模板标签里是一段小代码。 -->
+          <!-- {{ topic }}这些花括号不会出现在网页中，他们只是告诉Django我们使用了一个模板变量。 -->
+  	  	</h3>
+  	  </li>
+  	{% empty %}
+  	  <li>无</li>
+  	{% endfor %}
+  </ul>
+  </div>
+{% endblock contentleft %}
+
+{% block contentright%}
+  <div>  
+  <h3><a href="{% url 'learning_logs:new_topic' %}">添加新科目+</a></h3>
+  </div>
+{% endblock contentright %}
